@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Palace - FoodieExpress</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html">⬅ Back</a>
+    <h1>🍔 FoodieExpress</h1>
+    <a href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
+  </nav>
+
+  <!-- RESTAURANT HEADER -->
+  <div class="restaurant-header">
+    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&h=300&fit=crop"/>
+    <div class="restaurant-info">
+      <h2>Pizza Palace</h2>
+      <p>⭐ 4.5 • 20-30 min • Free Delivery</p>
+      <p>🍕 Italian • Pizza • Pasta</p>
+    </div>
+  </div>
+
+  <!-- MENU SECTION -->
+  <div class="section">
+    <h3>Our Menu</h3>
+    <div class="menu-grid">
+
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=300&h=200&fit=crop"/>
+        <div class="menu-info">
+          <h4>Margherita Pizza</h4>
+          <p>Fresh tomato, mozzarella, basil</p>
+          <div class="menu-bottom">
+            <span class="price">$12.99</span>
+            <button class="btn" onclick="addToCart('Margherita Pizza', 12.99)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item">

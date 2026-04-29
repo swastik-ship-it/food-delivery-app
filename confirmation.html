@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed! - FoodieExpress</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <h1>🍔 FoodieExpress</h1>
+    <a href="index.html">🏠 Home</a>
+  </nav>
+
+  <div class="confirm-box">
+    
+    <!-- SUCCESS ICON -->
+    <div class="success-icon">✅</div>
+    <h1>Order Placed Successfully!</h1>
+    <p>Your food is being prepared 🍳</p>
+
+    <!-- ORDER ID -->
+    <div class="order-card">
+      <p>📦 Order ID: <strong id="order-id"></strong></p>
+      <p>⏱ Estimated Delivery: <strong>30-45 minutes</strong></p>
+      <p>💳 Payment: <strong>Online Payment</strong></p>
+    </div>
+
+    <!-- TRACKING -->
+    <div class="tracking">
+      <h3>Live Order Tracking 🗺</h3>
+      <div class="track-steps">
+        <div class="step active">✅ Order Placed</div>
+        <div class="step active">👨‍🍳 Preparing</div>
+        <div class="step">🛵 On the Way</div>
+        <div class="step">🏠 Delivered</div>
+      </div>
+    </div>
+
+    <button class="btn" style="padding:15px 40px;font-size:18px;margin-top:20px"
+    onclick="newOrder()">
+      Order More Food 🍔
+    </button>
+
+  </div>
+
+  <script>
+    // Generate random order ID
+    document.getElementById('order-id').innerText = 
+    'FE' + Math.floor(Math.random() * 100000);
+
+    function newOrder() {
+      localStorage.removeItem('cart');
+      location.href = 'index.html';
+    }
+  </script>
+
+</body>
+</html>

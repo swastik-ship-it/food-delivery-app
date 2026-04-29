@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - FoodieExpress</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html">⬅ Back</a>
+    <h1>🛒 Your Cart</h1>
+    <span></span>
+  </nav>
+
+  <div class="section">
+    <div id="cart-items"></div>
+    
+    <div class="cart-total" id="cart-total" style="display:none">
+      <h3>Order Summary</h3>
+      <p>Subtotal: <strong id="subtotal">$0</strong></p>
+      <p>Delivery Fee: <strong>$2.99</strong></p>
+      <p>Total: <strong id="total">$0</strong></p>
+      <button class="btn" style="width:100%;padding:15px;font-size:18px;margin-top:15px" 
+      onclick="location.href='confirmation.html'">
+        Place Order 🎉
+      </button>
+    </div>
+
+    <div id="empty-cart" style="text-align:center;padding:50px">
+      <h2>🛒 Your cart is empty!</h2>
+      <p style="color:#777;margin:10px 0">Add items from a restaurant</p>
+      <button class="btn" onclick="location.href='index.html'">
+        Browse Restaurants
+      </button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    function loadCart() {
+      const cartItemsEl = document.getElementById('cart-items');
+      const emptyCart = document.getElementById('empty-cart');
+      const cartTotal = document.getElementById('cart-total');
+
+      if(cart.length === 0) {
+        emptyCart.style.display = 'block';
+        cartTotal.style.display = 'none';
+        return;
+      }
+
+      emptyCart.style.display = 'none';
+      cartTotal.style.display = 'block';
+
+      let html = '';
+      let subtotal = 0;
+
+      cart.forEach((item, index) => {
+        subtotal += item.price;
+        html += `
+          <div class="cart-item">
+            <div>
+              <h4>${item.name}</h4>
+              <p style="color:#ff4500">$${item.price}</p>
+            </div>
+            <button class="btn" onclick="removeItem(${index})">Remove</button>
+          </div>
+        `;
+      });
+
+      cartItemsEl.innerHTML = html;
+      document.getElementById('subtotal').innerText = '$' + subtotal.toFixed(2);
+      document.getElementById('total').innerText = '$' + (subtotal + 2.99).toFixed(2);
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+    }
+
+    loadCart();
+  </script>
+</body>
+</html>
